@@ -26,10 +26,18 @@ const Footer = () => {
                     <center>
                         <div className='mt-5'>
                             <ul className=' justify-center gap-10 items-center'>
-                                <li className='hover:scale-110 duration-300 hover:text-[#01AECD]'><Link href={"/"}>Home</Link></li>
-                                <li className='hover:scale-110 duration-300 hover:text-[#01AECD]'><Link href={"/project"}>Project</Link></li>
-                                <li className='hover:scale-110 duration-300 hover:text-[#01AECD]'><Link href={"/about"}>About</Link></li>
-                                <li className='hover:scale-110 duration-300 hover:text-[#01AECD]'><Link href={"/contact"}>Contact</Link></li>
+                                <li className='hover:scale-110 duration-300 hover:text-[#01AECD]'>
+                                    <Link href={"/"}>Home</Link>
+                                </li>
+                                <li className='hover:scale-110 duration-300 hover:text-[#01AECD]'>
+                                    <Link href={"/project"}>Project</Link>
+                                </li>
+                                <li className='hover:scale-110 duration-300 hover:text-[#01AECD]'>
+                                    <Link href={"/about"}>About</Link>
+                                </li>
+                                <li className='hover:scale-110 duration-300 hover:text-[#01AECD]'>
+                                    <Link href={"/contact"}>Contact</Link>
+                                </li>
                             </ul>
                         </div>
                     </center>
@@ -40,10 +48,22 @@ const Footer = () => {
                         <center>
                             <div className='mt-5'>
                                 <ul className='flex justify-center gap-5 items-center'>
-                                    <li className='rounded-full cursor-pointer  hover:scale-125 border-2 hover:border-[#01AECD]  border-black  p-3 duration-500 hover:text-[#01AECD] '><Link href={"https://www.facebook.com/uni.moma"} target='black'><FacebookIcon /></Link></li>
-                                    <li className='rounded-full cursor-pointer  hover:scale-125 border-2 hover:border-[#01AECD]  border-black  p-3 duration-500 hover:text-[#01AECD]'><Link href={"https://web.whatsapp.com/+923112813975"} target='black'><WhatsAppIcon /></Link></li>
-                                    <li className='rounded-full cursor-pointer  hover:scale-125 border-2 hover:border-[#01AECD]  border-black  p-3 duration-500 hover:text-[#01AECD]'><Link href={"https://github.com/sahilyousaf2"} target='black'><GitHubIcon /></Link></li>
-                                    <li className='rounded-full cursor-pointer  hover:scale-125 border-2 hover:border-[#01AECD]  border-black  p-3 duration-500 hover:text-[#01AECD]'><Link href={"https://www.linkedin.com/in/sahil-yousaf-02a0a52b5/"} target='black'><LinkedInIcon /></Link></li>
+                                    <li className='rounded-full cursor-pointer  hover:scale-125 border-2 hover:border-[#01AECD]  border-black  p-3 duration-500 hover:text-[#01AECD] '>
+                                        <Link href={"https://www.facebook.com/uni.moma"} target='black'><FacebookIcon />
+                                        </Link>
+                                    </li>
+                                    <li className='rounded-full cursor-pointer  hover:scale-125 border-2 hover:border-[#01AECD]  border-black  p-3 duration-500 hover:text-[#01AECD]'>
+                                        <Link href={"https://web.whatsapp.com/+923112813975"} target='black'><WhatsAppIcon />
+                                        </Link>
+                                    </li>
+                                    <li className='rounded-full cursor-pointer  hover:scale-125 border-2 hover:border-[#01AECD]  border-black  p-3 duration-500 hover:text-[#01AECD]'>
+                                        <Link href={"https://github.com/sahilyousaf2"} target='black'><GitHubIcon />
+                                        </Link>
+                                    </li>
+                                    <li className='rounded-full cursor-pointer  hover:scale-125 border-2 hover:border-[#01AECD]  border-black  p-3 duration-500 hover:text-[#01AECD]'>
+                                        <Link href={"https://www.linkedin.com/in/sahil-yousaf-02a0a52b5/"} target='black'><LinkedInIcon />
+                                        </Link>
+                                    </li>
 
                                 </ul>
                             </div>

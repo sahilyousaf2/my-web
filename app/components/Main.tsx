@@ -15,10 +15,10 @@ const Main = () => {
                         {/* heading */}
                         <div className="heading leading-snug text-4xl mb-5  ">
                             <h1>Hello I'am <span className='font-semibold hover:text-[#01AECD] cursor-pointer'>Sahil Yousaf <br /></span> Frontend Developer.
-                                </h1>
+                            </h1>
                         </div>
-                        <div className="para">
-                            <p>I Frontend Developer | ❇️ 1+ year of Tech Experience | ✨ Building products with HTML, CSS, Typescript and CLI Application | 🌱 Contributing open-source | 🤖 Learning Cloud Native Applied Generative AI | I'm students on-site at GIAIC.</p>
+                        <div className="para text-[15px] text-gray-500">
+                            <p>I'm Frontend Developer | ❇️ 1+ year of Tech Experience | ✨ Building products with HTML, CSS, Typescript and CLI Application | 🌱 Contributing open-source | 🤖 Learning Cloud Native Applied Generative AI | I'm students on-site at GIAIC.</p>
                         </div>
                         <div className="btn mt-5" >
                             <Button className='hover:scale-110 duration-300 hover:text-[#01AECD]' onClick={() => { route.push("/contact") }} variant={'outline'}>Contact</Button>
