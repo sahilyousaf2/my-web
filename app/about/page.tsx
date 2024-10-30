@@ -19,7 +19,6 @@ export default function About() {
           <div>
             <Image className='mx-auto rounded-md hover:scale-105 duration-300 hover:shadow-2xl' src={"/men.jpg"} height={100} width={300} alt='men'></Image>
           </div>
-
         </div>
       </main>
       <Footer />
