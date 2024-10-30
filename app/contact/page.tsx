@@ -10,7 +10,7 @@ function Contact() {
         <main className="md:max-w-7xl max-w-[1000px] ml-[90px] mx-auto pt-20">
           <div className="flex flex-col md:flex-row justify-center mb-20">
             <div className="w-full md:w-1/2 p-6">
-              <form className="mt-4 shadow-2xl rounded-lg p-5">
+              <form className="mt-4 shadow-2xl rounded-lg p-5" >
                 <h1 className="text-3xl font-bold mb-2 text-center p-4">Contact Me</h1>
                 <div className="flex flex-col mb-4">
                   <label htmlFor="name">Name:</label>
