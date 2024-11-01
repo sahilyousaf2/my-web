@@ -12,6 +12,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
+import { ModeToggle } from './theme.btn'
 
 const Header = () => {
   const route = useRouter()
@@ -21,7 +22,7 @@ const Header = () => {
         <nav className="w-[640px] mx-auto md:w-[1170px]">
           <div className="main flex justify-between items-center h-14 ">
             <div className="logo">
-              <Link href={"/"}><h1 className='md:text-3xl hover:scale-110 duration-300 hover:text-[#01AECD] font-bold ml-5 md:pl-0 text-xl'>Sahil Yousaf</h1></Link>
+              <Link href={"/"}><h1 className='md:text-2xl   hover:scale-110 duration-300 hover:text-[#01AECD] font-bold ml-5 md:pl-0 text-xl'>Sahil Yousaf</h1></Link>
             </div>
             {/* list */}
             <div className="space-x-4 hidden md:flex">
@@ -35,6 +36,7 @@ const Header = () => {
               <Button onClick={() => {
                 route.push("/contact")
               }} className='hover:scale-110 duration-300 mx-1 hover:text-[#01AECD]' size={"sm"} variant="outline">Contact</Button>
+              <ModeToggle />
               <div>
                 <div className='md:hidden mr-12'>
                   <Sheet>
