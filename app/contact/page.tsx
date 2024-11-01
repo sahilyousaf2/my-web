@@ -7,7 +7,7 @@ function Contact() {
     <>
       <Header />  
     <div className="flex flex-col items-center justify-center min-h-screen md:w-auto w-[720px] md:mx-auto mr-[50px]">
-      <form className="w-full max-w-lg bg-white p-8 shadow-md rounded-lg">
+      <form className="w-full max-w-lg light:bg-white p-8 shadow-md rounded-lg">
         <div className="mb-4">
       <h2 className="text-3xl font-bold mb-6 text-center">Contact Us</h2>
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
@@ -38,7 +38,7 @@ function Contact() {
             Message
           </label>
           <textarea
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring"
+            className= " resize-none shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring"
             id="message"
             placeholder="Your Message"
             rows={4}
