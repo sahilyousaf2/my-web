@@ -1,15 +1,38 @@
+'use client'
 import Header from "../components/Header";
-import Footer from "../components/Footer";
 import Image from "next/image";
-import Main from "../components/Main";
+import { Button } from '@/components/ui/button'
+import { useRouter } from 'next/navigation'
 
 
 export default function About() {
+  const route = useRouter()
   return (
     <>
       <Header />
-      <Main />
-      <Footer />
+      <main className="md:w-[1170px] mx-auto md:mt-48 w-[640px] mt-16">
+        <div className="grid md:grid-cols-[60%_40%] gap-10 grid-flow-row ">
+          {/* text div */}
+          <div className='mx-5 md:mx-10'>
+            {/* heading */}
+            <div className="heading leading-snug text-4xl mb-5  ">
+              <h1>Hello I'am <span className='font-semibold hover:text-[#01AECD] cursor-pointer'>Sahil Yousaf <br /></span> Frontend Developer.
+              </h1>
+            </div>
+            <div className="para text-[15px] text-gray-700 dark:text-gray-300 ">
+              <p>I'm Frontend Developer | ❇️ 1+ year of Tech Experience | 🌱 Contributing open-source | 🤖 Learning Cloud Native Applied Generative AI | I'm students on-site at GIAIC., I specialize in crafting responsive, user-friendly, and visually appealing interfaces that bring your brand to life. With a strong foundation in HTML, CSS, TypeScript, and modern frameworks like Next.js, I'm confident in my ability to deliver high-quality solutions that meet your needs.</p>
+            </div>
+            <div className="btn mt-5" >
+              <Button className='hover:scale-110 duration-300 hover:text-[#01AECD]' onClick={() => { route.push("/contact") }} variant={'outline'}>Contact</Button>
+            </div>
+          </div>
+          {/* image div */}
+          <div className=''>
+            <Image className='mx-auto rounded-md hover:scale-105 duration-300 hover:shadow-2xl' src={"/men.jpg"} height={100} width={300} alt='men'></Image>
+          </div>
+        </div>
+
+      </main>
     </>
   );
 }
