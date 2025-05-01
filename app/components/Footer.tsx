@@ -1,85 +1,81 @@
+
+'use client'
 import React from 'react'
 import Link from 'next/link'
 import FacebookIcon from '@mui/icons-material/Facebook'
 import WhatsAppIcon from '@mui/icons-material/WhatsApp'
-import GitHubIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from '@mui/icons-material/GitHub'
+import LinkedInIcon from '@mui/icons-material/LinkedIn'
+import { motion } from 'framer-motion'
 
-const Footer = () => {
+export default function Footer() {
     return (
-        <>
-            <footer className=' w-[640px]  md:w-auto mt-44 md:text-base'>
-                <div className='mt-4'>
-                    {/* <hr className='bg-black h-[2px]'/> */}
-                    <hr className="border-t-2 border-[#01AECD]" />
-                </div>
-                {/* logo */}
-                <div className='mt-5 text-3xl'>
-                    <center>
-                        <Link href={"/"}>
-                            <h1 className='hover:text-[#01AECD] hover:scale-110 duration-300'>Sahil Yousaf</h1>
-                        </Link>
-                    </center>
-                </div>
-                {/* list */}
+        <motion.footer
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            viewport={{ once: true }}
+            className="bg-gradient-to-r from-black via-lime-500/50 to-black text-gray-300 py-10 px-6 md:px-12"
+        >
+            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+                {/* Logo and About */}
                 <div>
-                    <center>
-                        <div className='mt-5'>
-                            <ul className=' justify-center gap-10 items-center'>
-                                <li className='hover:scale-110 duration-300 hover:text-[#01AECD]'>
-                                    <Link href={"/"}>Home</Link>
-                                </li>
-                                <li className='hover:scale-110 duration-300 hover:text-[#01AECD]'>
-                                    <Link href={"/project"}>Project</Link>
-                                </li>
-                                <li className='hover:scale-110 duration-300 hover:text-[#01AECD]'>
-                                    <Link href={"/about"}>About</Link>
-                                </li>
-                                <li className='hover:scale-110 duration-300 hover:text-[#01AECD]'>
-                                    <Link href={"/contact"}>Contact</Link>
-                                </li>
-                            </ul>
-                        </div>
-                    </center>
+                    <h2 className="text-xl font-bold text-white mb-4">Sahil Yousaf</h2>
+                    <p className="text-sm">
+                        Crafting responsive, modern UIs with passion and clean code.
+                    </p>
                 </div>
-                {/* icon */}
-                <div>
-                    <div>
-                        <center>
-                            <div className='mt-5'>
-                                <ul className='flex justify-center gap-5 items-center'>
-                                    <li className='rounded-full cursor-pointer  hover:scale-125 border-2 hover:border-[#01AECD]  border-black  p-3 duration-500 hover:text-[#01AECD] '>
-                                        <Link href={"https://www.facebook.com/uni.moma"} target='black'><FacebookIcon />
-                                        </Link>
-                                    </li>
-                                    <li className='rounded-full cursor-pointer  hover:scale-125 border-2 hover:border-[#01AECD]  border-black  p-3 duration-500 hover:text-[#01AECD]'>
-                                        <Link href={"https://web.whatsapp.com/+923112813975"} target='black'><WhatsAppIcon />
-                                        </Link>
-                                    </li>
-                                    <li className='rounded-full cursor-pointer  hover:scale-125 border-2 hover:border-[#01AECD]  border-black  p-3 duration-500 hover:text-[#01AECD]'>
-                                        <Link href={"https://github.com/sahilyousaf2"} target='black'><GitHubIcon />
-                                        </Link>
-                                    </li>
-                                    <li className='rounded-full cursor-pointer  hover:scale-125 border-2 hover:border-[#01AECD]  border-black  p-3 duration-500 hover:text-[#01AECD]'>
-                                        <Link href={"https://www.linkedin.com/in/sahil-yousaf-02a0a52b5/"} target='black'><LinkedInIcon />
-                                        </Link>
-                                    </li>
 
-                                </ul>
-                            </div>
-                        </center>
+                {/* Links */}
+                <div className="flex justify-between md:justify-around">
+                    <ul className="space-y-2 text-sm">
+                        <li>
+                            <Link href="/" className="hover:text-white">
+                                Home
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/project" className="hover:text-white">
+                                Projects
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/about" className="hover:text-white">
+                                About
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/contact" className="hover:text-white">
+                                Contact
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
+
+                {/* Social Media */}
+                <div>
+                    <h3 className="text-sm font-semibold mb-3 text-white">Follow Me</h3>
+                    <div className="flex space-x-4">
+                        <Link href="https://www.facebook.com/uni.moma" target="_blank">
+                            <FacebookIcon className="text-2xl hover:text-lime-400 transition" />
+                        </Link>
+                        <Link href="https://web.whatsapp.com/+923112813975" target="_blank">
+                            <WhatsAppIcon className="text-2xl hover:text-lime-400 transition" />
+                        </Link>
+                        <Link href="https://github.com/sahilyousaf2" target="_blank">
+                            <GitHubIcon className="text-2xl hover:text-lime-400 transition" />
+                        </Link>
+                        <Link href="https://www.linkedin.com/in/sahil-yousaf-02a0a52b5/" target="_blank">
+                            <LinkedInIcon className="text-2xl hover:text-lime-400 transition" />
+                        </Link>
                     </div>
                 </div>
+            </div>
 
-                <div className='text-sm p-[30px_0px]'>
-                    <center>
-                        @2024 Copyright Sahil Yousaf
-                    </center>
-
-                </div>
-            </footer>
-        </>
+            {/* Bottom Text */}
+            <div className="mt-10 text-center text-sm text-gray-400">
+                &copy; {new Date().getFullYear()} Sahil Yousaf. All rights reserved.
+            </div>
+        </motion.footer>
     )
 }
-
-export default Footer

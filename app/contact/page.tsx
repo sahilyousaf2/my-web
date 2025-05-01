@@ -1,138 +1,132 @@
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import { Button } from "@/components/ui/button";
+'use client'
 
-function Contact() {
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+import emailjs from 'emailjs-com'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
+export default function Contact() {
+  const [form, setForm] = useState({ email: '', name: '', message: '' })
+  const [loading, setLoading] = useState(false)
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value })
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setLoading(true)
+
+    try {
+      await emailjs.send(
+        'service_zieg0dl',
+        'template_sf1gda9',
+        {
+          email: form.email,
+          name: form.name,
+          message: form.message,
+        },
+        'Drencp2jCsH-RA3rF'
+      )
+      toast.success('✅ Message sent successfully!')
+      setForm({ email: '', name: '', message: '' })
+    } catch (error) {
+      console.error('Email send failed:', error)
+      toast.error('❌ Failed to send the message, please try again.')
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
-    <>
-      <Header />  
-    <div className="flex flex-col items-center justify-center min-h-screen md:w-auto w-[720px] md:mx-auto mr-[50px]">
-      <form className="w-full max-w-lg light:bg-white p-8 shadow-md rounded-lg">
-        <div className="mb-4">
-      <h2 className="text-3xl font-bold mb-6 text-center">Contact Us</h2>
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
-            Name
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring"
-            id="name"
-            type="text"
-            placeholder="Your Name"
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
-            Email
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring"
-            id="email"
-            type="email"
-            placeholder="Your Email"
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="message">
-            Message
-          </label>
-          <textarea
-            className= " resize-none shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring"
-            id="message"
-            placeholder="Your Message"
-            rows={4}
-            required
-          ></textarea>
-        </div>
-        <center>
-                  <Button size={"lg"} className="mt-4 hover:text-[#01AECD]" variant="outline">Submit</Button>
+    <div className="min-h-screen flex md:mt-14 mt-10 items-center justify-center bg-black px-4">
+      <ToastContainer position="bottom-right" autoClose={3000} />
 
-                </center>
-      </form>
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7 }}
+        viewport={{ once: true }}
+        className="max-w-md w-full text-center text-white"
+      >
+        <motion.h1
+          initial={{ opacity: 0, y: -30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-3xl font-bold mb-4"
+        >
+          Get In Touch
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="text-sm text-gray-400 mb-8"
+        >
+          Have a project in mind? Contact me to get started!
+        </motion.p>
+
+        <motion.form
+          onSubmit={handleSubmit}
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="space-y-4"
+        >
+          <div className="text-left">
+            <label className="block font-bold mb-1">Name</label>
+            <input
+              type="text"
+              name="name"
+              value={form.name}
+              onChange={handleChange}
+              placeholder="Enter your name"
+              className="w-full p-3 rounded bg-black border-lime-400 border-2 text-white outline-none"
+            />
+          </div>
+
+          <div className="text-left">
+            <label className="block font-bold mb-1">Email</label>
+            <input
+              type="email"
+              name="email"
+              value={form.email}
+              onChange={handleChange}
+              required
+              placeholder="Enter your email"
+              className="w-full p-3 rounded bg-black border-lime-400 border-2 text-white outline-none"
+            />
+          </div>
+
+          <div className="text-left">
+            <label className="block font-bold mb-1">Message</label>
+            <textarea
+              name="message"
+              value={form.message}
+              onChange={handleChange}
+              required
+              placeholder="Enter your message"
+              rows={4}
+              className="w-full p-3 rounded bg-black border-lime-400 border-2 text-white outline-none resize-none"
+            ></textarea>
+          </div>
+
+          <div className="pt-4">
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-lime-500 text-white font-bold py-3 rounded hover:bg-lime-700 transition"
+            >
+              {loading ? 'Sending...' : 'Submit ↗'}
+            </button>
+          </div>
+        </motion.form>
+      </motion.div>
     </div>
-
-
-      {/* <div className="md:mt-10 md:w-[1170px] md:mx-auto ">
-        <main >
-          <div className="flex flex-col md:flex-row justify-center mb-20">
-            <div className="w-full md:w-1/2 p-6">
-              <form className="mt-4 shadow-2xl rounded-lg p-5">
-                <h1 className="text-3xl font-bold mb-2 text-center p-4">Contact Me</h1>
-                <div className="flex flex-col mb-4">
-                  <label htmlFor="name">Name:</label>
-                  <input
-                    type="text"
-                    id="name"
-                    className="w-full py-2 pl-10 text-sm rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 border"
-                  />
-                </div>
-                <div className="flex flex-col mb-4">
-                  <label htmlFor="email">Email:</label>
-                  <input
-                    type="email"
-                    id="email"
-                    className="w-full py-2 pl-10 text-sm rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 border"
-                  />
-                </div>
-                <div className="flex flex-col mb-4">
-                  <label htmlFor="message">Message:</label>
-                  <textarea
-                    id="message"
-                    className="w-full py-2 pl-10 text-sm rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 resize-none border"
-                  />
-                </div>
-                <center>
-                  <Button size={"lg"} className="mt-4 hover:text-[#01AECD]" variant="outline">Submit</Button>
-                </center>
-              </form>
-            </div>
-          </div>
-        </main>
-      </div> */}
-      {/* <div>
-
-
-        <main className="md:max-w-7xl max-w-[640px] mx-auto pt-20">
-          <div className="flex flex-wrap justify-center mb-20">
-            <div className="w-full md:w-1/2 p-6">
-              <form className="mt-4 shadow-2xl rounded-lg p-5">
-                
-            <h1 className="text-3xl font-bold mb-2 text-center p-4">Contact Me</h1>
-                <div className="flex flex-col mb-4">
-                  <label htmlFor="name">Name:</label>
-                  <input
-                    type="text"
-                    id="name"
-                    className="py-2 pl-10 text-sm  rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 border"
-                  />
-                </div>
-                <div className="flex flex-col mb-4">
-                  <label htmlFor="email">Email:</label>
-                  <input
-                    type="email"
-                    id="email"
-                    className="py-2 pl-10 text-sm rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 border"
-                  />
-                </div>
-                <div className="flex flex-col mb-4">
-                  <label htmlFor="message">Message:</label>
-                  <textarea
-                    id="message"
-                    className="py-2 pl-10 text-sm  rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 resize-none border"
-                  />
-                </div>
-
-              </form>
-            </div>
-
-          </div>
-        </main>
-
-      </div> */}
-      <Footer />
-    </>
-  );
+  )
 }
-
-export default Contact;

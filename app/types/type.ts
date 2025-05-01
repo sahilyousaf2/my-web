@@ -1,8 +1,17 @@
-export interface CardProps{
-    heading:string,
-    discription:string,
-    imageSrc:string,
-    btnText:string,
-    linkURL:string
+export interface ProjectCardType{
+    title: string,
+    description:string,
+    tagColor:string,
+    buttonColor:string,
+    glow: string,
+    image: string,
+    reverse: boolean,
+    link:string
+    
+  }
 
+export interface navDataType {
+    name:string;
+    link:string
 }
+

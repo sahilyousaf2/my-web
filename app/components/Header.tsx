@@ -1,81 +1,84 @@
-'use client'
-import React from 'react'
-import Link from 'next/link'
-// import Button from './Button'
-import { Button } from '@/components/ui/button'
-import { useRouter } from 'next/navigation'
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet"
-import { ModeToggle } from './theme.btn'
 
-const Header = () => {
-  const route = useRouter()
+'use client';
+
+import { useState } from 'react';
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
+import { Menu, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { navLinksNames } from '@/data/navData';
+
+export default function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+
+  const menuVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
+    exit: { opacity: 0, y: -20, transition: { duration: 0.2, ease: 'easeIn' } },
+  };
+
+  const mobileMenuVariants = {
+    hidden: { opacity: 0, height: 0 },
+    visible: {
+      opacity: 1,
+      height: 'auto',
+      transition: { duration: 0.3, ease: 'easeOut' },
+    },
+    exit: { opacity: 0, height: 0, transition: { duration: 0.2, ease: 'easeIn' } },
+  };
+
   return (
-    <>
-      <header className='mt-3 backdrop-blur sticky top-0'>
-        <nav className="w-[640px] mx-auto md:w-[1170px]">
-          <div className="main flex justify-between items-center h-14 ">
-            <div className="logo">
-              <Link href={"/"}><h1 className='md:text-2xl   hover:scale-110 duration-300 hover:text-[#01AECD] font-bold ml-5 md:pl-0 text-xl'>Sahil Yousaf</h1></Link>
-            </div>
-            {/* list */}
-            <div className="space-x-4 hidden md:flex">
-              <ul className='flex gap-7 items-center ml-[650px]'>
-                <li className='hover:scale-110 duration-300 hover:text-[#01AECD]'><Link href={"/"}>Home</Link></li>
-                <li className='hover:scale-110 duration-300 hover:text-[#01AECD]'><Link href={"/project"}>Project</Link></li>
-                <li className='hover:scale-110 duration-300 hover:text-[#01AECD]'><Link href={"/about"}>About</Link></li>
-              </ul>
-            </div>
-            <div className='flex items-center'>
-              <Button onClick={() => {
-                route.push("/contact")
-              }} className='hover:scale-110 duration-300 mx-1 hover:text-[#01AECD]' size={"sm"} variant="outline">Contact</Button>
-              <ModeToggle />
-              <div>
-                <div className='md:hidden mr-12'>
-                  <Sheet>
-                    <SheetTrigger>
-                      <svg className='w-6' fill='none' stroke='currentColor' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
-                        <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M4 6h16M4 12h16m-7 6h7'></path>
-                      </svg>
+    <motion.header
+      initial="hidden"
+      animate="visible"
+      variants={menuVariants}
+      className="fixed top-0 w-full z-50 bg-neutral-900 text-white shadow-md"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+        <Link href="/" className="text-xl font-bold text-lime-400 md:text-2xl">Sahil Yousaf</Link>
 
-                    </SheetTrigger>
-                    <SheetContent>
-                      <SheetHeader>
-                        <SheetTitle className='font-bold'>Sahil Yousaf</SheetTitle> 
-                        <SheetDescription>
-                          <div className="">
-                            <ul className='flex flex-col gap-5 items-center'>
-                              <li className='hover:scale-110 duration-300 hover:text-[#01AECD]'><Link href={"/"}>Home</Link></li>
-                              <li className='hover:scale-110 duration-300 hover:text-[#01AECD]'><Link href={"/project"}>Project</Link></li>
-                              <li className='hover:scale-110 duration-300 hover:text-[#01AECD]'><Link href={"/about"}>About</Link></li>
-                            </ul>
-                          </div>
-                        </SheetDescription>
-                      </SheetHeader>
-                    </SheetContent>
-                  </Sheet>
-
-                </div>
-              </div>
-            </div>
-          </div>
-
+        <nav className="hidden md:flex space-x-6">
+          {navLinksNames.map((item, idx) => (
+            <Link
+              key={idx}
+              href={item.link}
+              className={`hover:text-lime-400 transition-all duration-300 ${pathname === item.link
+                  ? 'text-lime-400 font-semibold'
+                  : 'text-white'
+                }`}
+            >
+              {item.name}
+            </Link>
+          ))}
         </nav>
-      </header>
-    </>
-  )
+
+        {/* Mobile Menu Toggle */}
+        <div className="md:hidden">
+          <button onClick={() => setIsOpen(!isOpen)} className="text-gray-600 hover:text-black">
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu with Animation */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            key="mobile-menu"
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            variants={mobileMenuVariants}
+            className="md:hidden bg-neutral-900 text-white px-4 pb-4 space-y-2 shadow-md overflow-hidden"
+          >
+            <Link href="/" onClick={() => setIsOpen(false)} className="block hover:text-lime-500 transition-all duration-300">Home</Link>
+            <Link href="/project" onClick={() => setIsOpen(false)} className="block hover:text-lime-500 transition-all duration-300">Projects</Link>
+            <Link href="/about" onClick={() => setIsOpen(false)} className="block hover:text-lime-500 transition-all duration-300">About</Link>
+            <Link href="/contact" onClick={() => setIsOpen(false)} className="block hover:text-lime-500 transition-all duration-300">Contact</Link>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.header>
+  );
 }
-
-export default Header
-
-
-
-
-
