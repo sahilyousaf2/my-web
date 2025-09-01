@@ -88,7 +88,7 @@ export default function About() {
             >
               {[
                 'HTML', 'CSS', 'JAVASCRIPT', 'TYPESCRIPT',
-                'Tailwind CSS', 'NEXT.JS', 'SANITY', 'Figma'
+                'TAILWIND CSS', 'NEXT.JS', 'SANITY', 'Figma',"CONTENTFUL","OPENAI AGENTS SDK"
               ].map((skill) => (
                 <span
                   key={skill}

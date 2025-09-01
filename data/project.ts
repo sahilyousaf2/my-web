@@ -3,12 +3,12 @@ export const ProjectCardData: ProjectCardType[] = [
   {
     title: 'GOOD NEWS ALL NATIONS MINISTRIES',
     description:
-      'Good News All Nations Ministries is a faith-centered platform featuring sermons, live services, events, and ways to connect—like prayer requests and donations. The UI highlights upcoming gatherings, showcases recent messages, and keeps supporters informed through a clean, responsive layout. Built with Next.js and Tailwind CSS (with CMS + Vercel deploy), it’s optimized for fast, accessible browsing across devices.',
+      'Good News All Nations Ministries is a faith-centered platform featuring sermons, events, and ways to connect—like prayer requests and donations. The UI highlights upcoming gatherings, showcases recent messages, and keeps supporters informed through a clean, responsive layout. Built with Next.js and Tailwind CSS (with CMS + Vercel deploy), it’s optimized for fast, accessible browsing across devices.',
     tagColor: 'bg-indigo-200 text-indigo-700',
     buttonColor: 'bg-blue-600 text-white',
     glow: 'shadow-[0_0_15px_5px_rgba(59,130,246,0.35)]',
     image: '/project1.png', // apni image ka path rakho
-    reverse: false,
+    reverse: true,
     link: 'https://www.goodnewsallnationsministries.com/'
   }
 
