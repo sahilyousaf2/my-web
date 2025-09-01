@@ -87,7 +87,7 @@ export default function About() {
               className="flex flex-wrap cursor-pointer justify-center gap-4"
             >
               {[
-                'HTML', 'CSS', 'JAVASCRIPT', 'TYPESCRIPT',
+                'HTML', 'CSS', 'JAVASCRIPT', 'TYPESCRIPT',"PYTHON",
                 'TAILWIND CSS', 'NEXT.JS', 'SANITY', 'Figma',"CONTENTFUL","OPENAI AGENTS SDK"
               ].map((skill) => (
                 <span
