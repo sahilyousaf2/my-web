@@ -53,13 +53,14 @@ export default function Footer() {
                 </div>
 
                 {/* Social Media */}
+              
                 <div>
                     <h3 className="text-sm font-semibold mb-3 text-white">Follow Me</h3>
                     <div className="flex space-x-4">
                         <Link href="https://www.facebook.com/uni.moma" target="_blank">
                             <FacebookIcon className="text-2xl hover:text-lime-400 transition" />
                         </Link>
-                        <Link href="https://web.whatsapp.com/+923112813975" target="_blank">
+                        <Link href="https://wa.me/+923112813975" target="_blank">
                             <WhatsAppIcon className="text-2xl hover:text-lime-400 transition" />
                         </Link>
                         <Link href="https://github.com/sahilyousaf2" target="_blank">

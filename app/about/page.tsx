@@ -1,73 +1,3 @@
-
-// import Head from 'next/head'
-// import Link from 'next/link'
-
-// export default function About() {
-//   return (
-//     <>
-//       <Head>
-//         <title>About Me | Portfolio</title>
-//       </Head>
-
-//       <main className="bg-black text-white min-h-screen">
-//         {/* Hero Section */}
-//         <section className="max-w-6xl md:mt-20 mt-14 mx-auto px-6 py-24 flex flex-col md:flex-row items-center gap-12">
-//           {/* Text */}
-//           <div className="flex-1">
-//             <h1 className="text-4xl md:text-6xl font-extrabold bg-gradient-to-r from-green-400 via-blue-500 to-purple-500 bg-clip-text text-transparent mb-6">
-//               Sahil Yousaf 👋
-//             </h1>
-//             <p className="text-lg text-gray-300 mb-8">
-//             Hey! I'm a passionate self-taught frontend developer who kickstarted my coding journey in 2023 through Governor Initiative Karachi. I specialize in building modern web applications using Next.js, TypeScript, and Tailwind CSS, with experience in Sanity CMS and Figma for design. Currently, I'm expanding my skills into Python for backend development and AI integration to create smarter web solutions. My goal? To evolve into a full-stack developer and build innovative, AI-powered applications that solve real-world problems. Let's connect and create something amazing together! 💻✨
-//             </p>
-//             <Link
-//               href="/contact"
-//               className="w-full sm:w-auto px-8 py-3 backdrop-blur-md bg-lime-500/80 text-white font-semibold rounded-xl shadow-xl hover:bg-lime-600 hover:scale-105 transition-all duration-300"
-//             >
-//               Let's connect
-//             </Link>
-//           </div>
-
-//           {/* Profile Card */}
-//           <div className="flex-1 flex justify-center">
-//             <div className="bg-gradient-to-tr from-green-500/30 via-blue-500/20 to-purple-500/10 p-1 rounded-full shadow-lg hover:scale-105 transition-all">
-//               <img
-//                 src="/men.jpg"
-//                 alt="Profile"
-//                 className="rounded-full w-72 h-72 object-cover border-4 border-black"
-//               />
-//             </div>
-//           </div>
-//         </section>
-
-//         {/* Skills Section */}
-//         <section className="bg-white text-black py-16">
-//           <div className="max-w-5xl mx-auto px-6 text-center">
-//             <h2 className="text-3xl md:text-4xl font-bold mb-4">What I Do</h2>
-//             <p className="text-gray-700 max-w-2xl mx-auto mb-10">
-//               I design, build and sometimes overthink digital experiences for the web.
-//               My work is rooted in creativity, empathy, and clean code.
-//             </p>
-
-//             <div className="flex flex-wrap cursor-pointer justify-center gap-4">
-//               {['HTML', 'CSS', 'JAVASCRIPT', 'TYPESCRIPT', 'Tailwind CSS','NEXT.JS', 'SANITY', 'Figma'].map((skill) => (
-//                 <span
-//                   key={skill}
-//                   className="bg-black text-white px-4 py-2 rounded-full text-sm hover:bg-green-600 transition-all"
-//                 >
-//                   {skill}
-//                 </span>
-//               ))}
-//             </div>
-//           </div>
-//         </section>
-//       </main>
-//     </>
-//   )
-// }
-
-
-
 'use client'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -77,10 +7,6 @@ import Image from 'next/image'
 export default function About() {
   return (
     <>
-      <Head>
-        <title>About Me | Portfolio</title>
-      </Head>
-
       <main className="bg-black text-white min-h-screen">
 
         {/* Hero Section */}
