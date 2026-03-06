@@ -4,53 +4,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import {
-  Code2,
-  Palette,
-  Smartphone,
-  Zap,
-  Cloud,
-  TrendingUp,
   Rocket,
   Users,
   Zap as Lightning,
+  TrendingUp,
 } from 'lucide-react';
-import ServiceCard from './components/ServiceCard';
-import PricingCard from './components/PricingCard';
 import ProjectCard from './components/ProjectCard';
 import FeatureCard from './components/FeatureCard';
-
-const services = [
-  {
-    icon: Code2,
-    title: 'Web Development',
-    description: 'Custom websites and web applications built with modern frameworks and best practices.',
-  },
-  {
-    icon: Palette,
-    title: 'UI/UX Design',
-    description: 'Beautiful, intuitive designs that prioritize user experience and brand identity.',
-  },
-  {
-    icon: Smartphone,
-    title: 'Mobile App Development',
-    description: 'Native and cross-platform mobile applications for iOS and Android.',
-  },
-  {
-    icon: Zap,
-    title: 'AI Solutions',
-    description: 'Intelligent systems and machine learning solutions for modern challenges.',
-  },
-  {
-    icon: Cloud,
-    title: 'Cloud Solutions',
-    description: 'Scalable cloud infrastructure and deployment strategies.',
-  },
-  {
-    icon: TrendingUp,
-    title: 'Digital Marketing',
-    description: 'Strategic digital marketing to boost your online presence and growth.',
-  },
-];
 
 const features = [
   {
@@ -72,50 +32,6 @@ const features = [
     icon: TrendingUp,
     title: 'Client Satisfaction',
     description: 'Your success is our success. We focus on delivering results.',
-  },
-];
-
-const pricing = [
-  {
-    name: 'Basic',
-    price: '999',
-    description: 'Perfect for getting started',
-    features: [
-      'Up to 5 pages',
-      'Responsive design',
-      'Basic SEO optimization',
-      'Contact form',
-      '30-day support',
-    ],
-  },
-  {
-    name: 'Professional',
-    price: '2999',
-    description: 'Most popular for growing businesses',
-    features: [
-      'Up to 20 pages',
-      'Advanced features',
-      'Advanced SEO optimization',
-      'Blog integration',
-      'Analytics setup',
-      '90-day support',
-      'Monthly maintenance',
-    ],
-    isPopular: true,
-  },
-  {
-    name: 'Enterprise',
-    price: '9999',
-    description: 'For large-scale projects',
-    features: [
-      'Unlimited pages',
-      'Custom features',
-      'Full SEO optimization',
-      'Advanced integrations',
-      'E-commerce setup',
-      'Priority support',
-      'Quarterly reviews',
-    ],
   },
 ];
 
@@ -153,7 +69,7 @@ export default function App() {
         <motion.div
           animate={{ rotate: -360 }}
           transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
-          className="absolute -bottom-40 -left-40 w-80 h-80 bg-secondary/20 rounded-full blur-3xl"
+          className="absolute -bottom-40 -left-40 w-80 h-80 bg-accent/20 rounded-full blur-3xl"
         />
       </div>
 
@@ -190,11 +106,11 @@ export default function App() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
-              <button className="px-8 py-3 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-primary/50 transition-all duration-300">
+              <button className="px-8 py-3 bg-gradient-to-r from-primary to-accent text-secondary font-semibold rounded-lg hover:shadow-lg hover:shadow-primary/50 transition-all duration-300">
                 <Link href="/contact">Get Started</Link>
               </button>
               <button className="px-8 py-3 glass border border-white/20 text-white font-semibold rounded-lg hover:border-primary/50 transition-all duration-300">
-                <a href="#services">Our Services</a>
+                <Link href="/services">Our Services</Link>
               </button>
             </motion.div>
           </motion.div>
@@ -213,30 +129,6 @@ export default function App() {
               </div>
             </div>
           </motion.div>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section id="services" className="relative py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4">Our Services</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Comprehensive solutions tailored to your business needs
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service, idx) => (
-              <ServiceCard key={idx} {...service} index={idx} />
-            ))}
-          </div>
         </div>
       </section>
 
@@ -259,30 +151,6 @@ export default function App() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {features.map((feature, idx) => (
               <FeatureCard key={idx} {...feature} index={idx} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing Section */}
-      <section id="pricing" className="relative py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4">Simple, Transparent Pricing</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Choose the perfect plan for your project needs
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {pricing.map((plan, idx) => (
-              <PricingCard key={idx} {...plan} index={idx} />
             ))}
           </div>
         </div>
@@ -338,7 +206,7 @@ export default function App() {
             <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
               Let's discuss how we can help you achieve your digital goals. Get in touch with our team today.
             </p>
-            <button className="px-8 py-3 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-primary/50 transition-all duration-300">
+            <button className="px-8 py-3 bg-gradient-to-r from-primary to-accent text-secondary font-semibold rounded-lg hover:shadow-lg hover:shadow-primary/50 transition-all duration-300">
               <Link href="/contact">Start Your Project</Link>
             </button>
           </motion.div>

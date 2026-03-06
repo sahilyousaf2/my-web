@@ -20,7 +20,7 @@ export default function Footer() {
                     {/* Company Info */}
                     <div>
                         <div className="flex items-center gap-2 mb-4">
-                            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center font-bold text-white">
+                            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center font-bold text-secondary">
                                 CT
                             </div>
                             <h2 className="text-xl font-bold text-white">Chris Tect Solution</h2>
@@ -36,8 +36,9 @@ export default function Footer() {
                         <ul className="space-y-2">
                             <li><Link href="/" className="text-muted-foreground hover:text-primary transition-colors">Home</Link></li>
                             <li><Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">About</Link></li>
-                            <li><Link href="/#services" className="text-muted-foreground hover:text-primary transition-colors">Services</Link></li>
+                            <li><Link href="/services" className="text-muted-foreground hover:text-primary transition-colors">Services</Link></li>
                             <li><Link href="/portfolio" className="text-muted-foreground hover:text-primary transition-colors">Portfolio</Link></li>
+                            <li><Link href="/pricing" className="text-muted-foreground hover:text-primary transition-colors">Pricing</Link></li>
                             <li><Link href="/contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</Link></li>
                         </ul>
                     </div>
@@ -46,11 +47,11 @@ export default function Footer() {
                     <div>
                         <h3 className="text-white font-semibold mb-4">Services</h3>
                         <ul className="space-y-2">
-                            <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Web Development</a></li>
-                            <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">UI/UX Design</a></li>
-                            <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Mobile Apps</a></li>
-                            <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">AI Solutions</a></li>
-                            <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Cloud Services</a></li>
+                            <li><Link href="/services" className="text-muted-foreground hover:text-primary transition-colors">Web Development</Link></li>
+                            <li><Link href="/services" className="text-muted-foreground hover:text-primary transition-colors">UI/UX Design</Link></li>
+                            <li><Link href="/services" className="text-muted-foreground hover:text-primary transition-colors">Mobile Apps</Link></li>
+                            <li><Link href="/services" className="text-muted-foreground hover:text-primary transition-colors">AI Solutions</Link></li>
+                            <li><Link href="/services" className="text-muted-foreground hover:text-primary transition-colors">Cloud Services</Link></li>
                         </ul>
                     </div>
 

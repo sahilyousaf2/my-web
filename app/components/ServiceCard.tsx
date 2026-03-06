@@ -26,7 +26,7 @@ export default function ServiceCard({
       whileHover={{ y: -8, boxShadow: '0 20px 40px rgba(99, 102, 241, 0.2)' }}
       className="glass p-6 rounded-2xl border border-white/10 group hover:border-primary/50 transition-all duration-300"
     >
-      <div className="mb-4 inline-block p-3 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl group-hover:from-primary/30 group-hover:to-secondary/30 transition-all">
+      <div className="mb-4 inline-block p-3 bg-gradient-to-br from-primary/20 to-accent/20 rounded-xl group-hover:from-primary/30 group-hover:to-accent/30 transition-all">
         <Icon className="w-6 h-6 text-primary" />
       </div>
       <h3 className="text-lg font-semibold text-white mb-2">{title}</h3>

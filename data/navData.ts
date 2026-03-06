@@ -11,7 +11,7 @@ export const navLinksNames :navDataType[]= [
     },
     {
         name:"Services",
-        link:"/#services"
+        link:"/services"
     },
     {
         name:"Portfolio",
@@ -19,7 +19,7 @@ export const navLinksNames :navDataType[]= [
     },
     {
         name:"Pricing",
-        link:"/#pricing"
+        link:"/pricing"
     },
     {
         name:"Contact",
@@ -27,4 +27,4 @@ export const navLinksNames :navDataType[]= [
     },
 ]
 
-export const linkAddress :string[] = ["/","/about","/#services","/portfolio","/#pricing","/contact"] 
+export const linkAddress :string[] = ["/","/about","/services","/portfolio","/pricing","/contact"] 

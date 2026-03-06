@@ -28,8 +28,8 @@ export default function ProjectCard({
       className="group relative overflow-hidden rounded-2xl border border-white/10 hover:border-primary/50 transition-all duration-300"
     >
       {/* Background Image */}
-      <div className="relative h-64 overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/20">
-        <div className="w-full h-full bg-gradient-to-br from-blue-500/30 via-purple-500/20 to-cyan-500/30 flex items-center justify-center">
+      <div className="relative h-64 overflow-hidden bg-gradient-to-br from-primary/20 to-accent/20">
+        <div className="w-full h-full bg-gradient-to-br from-primary/30 via-secondary/20 to-accent/30 flex items-center justify-center">
           <div className="text-center">
             <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md mx-auto mb-4 flex items-center justify-center">
               <ExternalLink className="w-8 h-8 text-primary" />

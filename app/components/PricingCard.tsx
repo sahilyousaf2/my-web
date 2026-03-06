@@ -34,7 +34,7 @@ export default function PricingCard({
       }`}
     >
       {isPopular && (
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-secondary to-accent" />
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-accent" />
       )}
 
       <div className="p-8">
@@ -55,8 +55,8 @@ export default function PricingCard({
         <button
           className={`w-full py-3 rounded-lg font-semibold transition-all duration-300 mb-8 ${
             isPopular
-              ? 'bg-primary text-white hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/30'
-              : 'glass text-white hover:bg-white/20'
+              ? 'bg-gradient-to-r from-primary to-accent text-secondary hover:shadow-lg hover:shadow-primary/50'
+              : 'glass text-white hover:border-primary/50'
           }`}
         >
           Get Started
