@@ -2,11 +2,8 @@
 'use client'
 import React from 'react'
 import Link from 'next/link'
-import FacebookIcon from '@mui/icons-material/Facebook'
-import WhatsAppIcon from '@mui/icons-material/WhatsApp'
-import GitHubIcon from '@mui/icons-material/GitHub'
-import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import { motion } from 'framer-motion'
+import { Mail, Phone, MapPin, Facebook, Linkedin, Twitter } from 'lucide-react'
 
 export default function Footer() {
     return (
@@ -15,68 +12,92 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
             viewport={{ once: true }}
-            className="bg-gradient-to-r from-black via-lime-500/50 to-black text-gray-300 py-10 px-6 md:px-12"
+            className="relative bg-gradient-to-b from-background via-background to-black border-t border-white/10"
         >
-            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-                {/* Logo and About */}
-                <div>
-                    <h2 className="text-xl font-bold text-white mb-4">Sahil Yousaf</h2>
-                    <p className="text-sm">
-                        Crafting responsive, modern UIs with passion and clean code.
+            {/* Main Footer Content */}
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+                    {/* Company Info */}
+                    <div>
+                        <div className="flex items-center gap-2 mb-4">
+                            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center font-bold text-white">
+                                CT
+                            </div>
+                            <h2 className="text-xl font-bold text-white">Chris Tect Solution</h2>
+                        </div>
+                        <p className="text-muted-foreground text-sm leading-relaxed">
+                            Innovative digital solutions for modern businesses. Transform your ideas into reality with cutting-edge technology.
+                        </p>
+                    </div>
+
+                    {/* Quick Links */}
+                    <div>
+                        <h3 className="text-white font-semibold mb-4">Quick Links</h3>
+                        <ul className="space-y-2">
+                            <li><Link href="/" className="text-muted-foreground hover:text-primary transition-colors">Home</Link></li>
+                            <li><Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">About</Link></li>
+                            <li><Link href="/#services" className="text-muted-foreground hover:text-primary transition-colors">Services</Link></li>
+                            <li><Link href="/portfolio" className="text-muted-foreground hover:text-primary transition-colors">Portfolio</Link></li>
+                            <li><Link href="/contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</Link></li>
+                        </ul>
+                    </div>
+
+                    {/* Services */}
+                    <div>
+                        <h3 className="text-white font-semibold mb-4">Services</h3>
+                        <ul className="space-y-2">
+                            <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Web Development</a></li>
+                            <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">UI/UX Design</a></li>
+                            <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Mobile Apps</a></li>
+                            <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">AI Solutions</a></li>
+                            <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Cloud Services</a></li>
+                        </ul>
+                    </div>
+
+                    {/* Contact Info */}
+                    <div>
+                        <h3 className="text-white font-semibold mb-4">Get In Touch</h3>
+                        <div className="space-y-3">
+                            <div className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors cursor-pointer">
+                                <Mail className="w-4 h-4" />
+                                <span className="text-sm">contact@christect.com</span>
+                            </div>
+                            <div className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors cursor-pointer">
+                                <Phone className="w-4 h-4" />
+                                <span className="text-sm">+1 (555) 123-4567</span>
+                            </div>
+                            <div className="flex items-center gap-2 text-muted-foreground">
+                                <MapPin className="w-4 h-4" />
+                                <span className="text-sm">San Francisco, CA</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Divider */}
+                <div className="border-t border-white/10 my-10" />
+
+                {/* Bottom Section */}
+                <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+                    <p className="text-muted-foreground text-sm">
+                        &copy; {new Date().getFullYear()} Chris Tect Solution. All rights reserved.
                     </p>
-                </div>
-
-                {/* Links */}
-                <div className="flex justify-between md:justify-around">
-                    <ul className="space-y-2 text-sm">
-                        <li>
-                            <Link href="/" className="hover:text-white">
-                                Home
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/project" className="hover:text-white">
-                                Projects
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/about" className="hover:text-white">
-                                About
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/contact" className="hover:text-white">
-                                Contact
-                            </Link>
-                        </li>
-                    </ul>
-                </div>
-
-                {/* Social Media */}
-              
-                <div>
-                    <h3 className="text-sm font-semibold mb-3 text-white">Follow Me</h3>
-                    <div className="flex space-x-4">
-                        <Link href="https://www.facebook.com/uni.moma" target="_blank">
-                            <FacebookIcon className="text-2xl hover:text-lime-400 transition" />
-                        </Link>
-                        <Link href="https://wa.me/+923112813975" target="_blank">
-                            <WhatsAppIcon className="text-2xl hover:text-lime-400 transition" />
-                        </Link>
-                        <Link href="https://github.com/sahilyousaf2" target="_blank">
-                            <GitHubIcon className="text-2xl hover:text-lime-400 transition" />
-                        </Link>
-                        <Link href="https://www.linkedin.com/in/sahil-yousaf-02a0a52b5/" target="_blank">
-                            <LinkedInIcon className="text-2xl hover:text-lime-400 transition" />
-                        </Link>
+                    <div className="flex items-center gap-4">
+                        <a href="#" className="text-muted-foreground hover:text-primary transition-colors p-2 hover:bg-white/10 rounded-lg">
+                            <Facebook className="w-5 h-5" />
+                        </a>
+                        <a href="#" className="text-muted-foreground hover:text-primary transition-colors p-2 hover:bg-white/10 rounded-lg">
+                            <Linkedin className="w-5 h-5" />
+                        </a>
+                        <a href="#" className="text-muted-foreground hover:text-primary transition-colors p-2 hover:bg-white/10 rounded-lg">
+                            <Twitter className="w-5 h-5" />
+                        </a>
                     </div>
                 </div>
             </div>
 
-            {/* Bottom Text */}
-            <div className="mt-10 text-center text-sm text-gray-400">
-                &copy; {new Date().getFullYear()} Sahil Yousaf. All rights reserved.
-            </div>
+            {/* Background Gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
         </motion.footer>
     )
 }

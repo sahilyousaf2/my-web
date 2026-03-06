@@ -33,29 +33,45 @@ export default function Header() {
       initial="hidden"
       animate="visible"
       variants={menuVariants}
-      className="fixed top-0 w-full z-50 bg-neutral-900 text-white shadow-md"
+      className="fixed top-0 w-full z-50 glass border-b border-white/10"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-        <Link href="/" className="text-xl font-bold text-lime-400 md:text-2xl">Sahil Yousaf</Link>
+        <Link href="/" className="flex items-center gap-2 group">
+          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center font-bold text-white text-lg">
+            CT
+          </div>
+          <span className="text-lg font-bold text-white hidden sm:inline">Chris Tect</span>
+        </Link>
 
-        <nav className="hidden md:flex space-x-6">
+        <nav className="hidden md:flex space-x-1">
           {navLinksNames.map((item, idx) => (
             <Link
               key={idx}
               href={item.link}
-              className={`hover:text-lime-400 transition-all duration-300 ${pathname === item.link
-                  ? 'text-lime-400 font-semibold'
-                  : 'text-white'
-                }`}
+              className={`px-4 py-2 rounded-lg transition-all duration-300 text-sm font-medium ${
+                pathname === item.link
+                  ? 'bg-primary/20 text-primary border border-primary/50'
+                  : 'text-white/80 hover:text-white hover:bg-white/10'
+              }`}
             >
               {item.name}
             </Link>
           ))}
         </nav>
 
+        {/* CTA Button */}
+        <div className="hidden md:flex">
+          <button className="px-6 py-2 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-primary/50 transition-all duration-300">
+            <Link href="/contact">Get Started</Link>
+          </button>
+        </div>
+
         {/* Mobile Menu Toggle */}
         <div className="md:hidden">
-          <button onClick={() => setIsOpen(!isOpen)} className="text-gray-600 hover:text-black">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="text-white hover:text-primary transition-colors"
+          >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
@@ -70,12 +86,23 @@ export default function Header() {
             animate="visible"
             exit="exit"
             variants={mobileMenuVariants}
-            className="md:hidden bg-neutral-900 text-white px-4 pb-4 space-y-2 shadow-md overflow-hidden"
+            className="md:hidden glass border-t border-white/10 px-4 pb-4 space-y-2 overflow-hidden"
           >
-            <Link href="/" onClick={() => setIsOpen(false)} className="block hover:text-lime-500 transition-all duration-300">Home</Link>
-            <Link href="/project" onClick={() => setIsOpen(false)} className="block hover:text-lime-500 transition-all duration-300">Projects</Link>
-            <Link href="/about" onClick={() => setIsOpen(false)} className="block hover:text-lime-500 transition-all duration-300">About</Link>
-            <Link href="/contact" onClick={() => setIsOpen(false)} className="block hover:text-lime-500 transition-all duration-300">Contact</Link>
+            {navLinksNames.map((item, idx) => (
+              <Link
+                key={idx}
+                href={item.link}
+                onClick={() => setIsOpen(false)}
+                className="block px-4 py-2 rounded-lg text-white hover:bg-white/10 transition-all duration-300"
+              >
+                {item.name}
+              </Link>
+            ))}
+            <div className="pt-4 border-t border-white/10">
+              <button className="w-full px-4 py-2 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-lg hover:shadow-lg transition-all duration-300">
+                <Link href="/contact">Get Started</Link>
+              </button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

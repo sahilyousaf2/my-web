@@ -1,98 +1,349 @@
 'use client';
+
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Typewriter } from 'react-simple-typewriter';
 import Link from 'next/link';
-import Image from 'next/image';
+import {
+  Code2,
+  Palette,
+  Smartphone,
+  Zap,
+  Cloud,
+  TrendingUp,
+  Rocket,
+  Users,
+  Zap as Lightning,
+} from 'lucide-react';
+import ServiceCard from './components/ServiceCard';
+import PricingCard from './components/PricingCard';
+import ProjectCard from './components/ProjectCard';
+import FeatureCard from './components/FeatureCard';
+
+const services = [
+  {
+    icon: Code2,
+    title: 'Web Development',
+    description: 'Custom websites and web applications built with modern frameworks and best practices.',
+  },
+  {
+    icon: Palette,
+    title: 'UI/UX Design',
+    description: 'Beautiful, intuitive designs that prioritize user experience and brand identity.',
+  },
+  {
+    icon: Smartphone,
+    title: 'Mobile App Development',
+    description: 'Native and cross-platform mobile applications for iOS and Android.',
+  },
+  {
+    icon: Zap,
+    title: 'AI Solutions',
+    description: 'Intelligent systems and machine learning solutions for modern challenges.',
+  },
+  {
+    icon: Cloud,
+    title: 'Cloud Solutions',
+    description: 'Scalable cloud infrastructure and deployment strategies.',
+  },
+  {
+    icon: TrendingUp,
+    title: 'Digital Marketing',
+    description: 'Strategic digital marketing to boost your online presence and growth.',
+  },
+];
+
+const features = [
+  {
+    icon: Rocket,
+    title: 'Modern Technology',
+    description: 'We use the latest frameworks and technologies for optimal performance.',
+  },
+  {
+    icon: Users,
+    title: 'Expert Developers',
+    description: 'Our team consists of experienced professionals with proven track records.',
+  },
+  {
+    icon: Lightning,
+    title: 'Fast Delivery',
+    description: 'Quick turnaround times without compromising on quality.',
+  },
+  {
+    icon: TrendingUp,
+    title: 'Client Satisfaction',
+    description: 'Your success is our success. We focus on delivering results.',
+  },
+];
+
+const pricing = [
+  {
+    name: 'Basic',
+    price: '999',
+    description: 'Perfect for getting started',
+    features: [
+      'Up to 5 pages',
+      'Responsive design',
+      'Basic SEO optimization',
+      'Contact form',
+      '30-day support',
+    ],
+  },
+  {
+    name: 'Professional',
+    price: '2999',
+    description: 'Most popular for growing businesses',
+    features: [
+      'Up to 20 pages',
+      'Advanced features',
+      'Advanced SEO optimization',
+      'Blog integration',
+      'Analytics setup',
+      '90-day support',
+      'Monthly maintenance',
+    ],
+    isPopular: true,
+  },
+  {
+    name: 'Enterprise',
+    price: '9999',
+    description: 'For large-scale projects',
+    features: [
+      'Unlimited pages',
+      'Custom features',
+      'Full SEO optimization',
+      'Advanced integrations',
+      'E-commerce setup',
+      'Priority support',
+      'Quarterly reviews',
+    ],
+  },
+];
+
+const projects = [
+  {
+    title: 'E-Commerce Platform',
+    category: 'Web Development',
+    image: '/project-1.jpg',
+  },
+  {
+    title: 'Mobile Banking App',
+    category: 'Mobile App',
+    image: '/project-2.jpg',
+  },
+  {
+    title: 'AI Analytics Dashboard',
+    category: 'AI Solutions',
+    image: '/project-3.jpg',
+  },
+];
 
 export default function App() {
   return (
-    <section className="relative max-w-7xl mx-auto md:mt-14 px-4 sm:px-6 md:px-10 lg:px-20 pt-[140px] pb-20 min-h-screen  text-white overflow-hidden">
+    <main className="min-h-screen text-white overflow-hidden">
+      {/* Background Gradient */}
+      <div className="fixed inset-0 -z-10 bg-gradient-to-br from-background via-background to-black" />
 
-      {/* Background Dots */}
-      <div className="absolute inset-0 z-0">
-        {[...Array(20)].map((_, i) => (
+      {/* Animated Background Elements */}
+      <div className="fixed inset-0 -z-10 overflow-hidden">
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+          className="absolute -top-40 -right-40 w-80 h-80 bg-primary/20 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{ rotate: -360 }}
+          transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
+          className="absolute -bottom-40 -left-40 w-80 h-80 bg-secondary/20 rounded-full blur-3xl"
+        />
+      </div>
+
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center px-4 pt-20">
+        <div className="max-w-7xl mx-auto w-full">
           <motion.div
-            key={i}
-            className="absolute w-2 h-2 rounded-full bg-white/10"
-            initial={{ opacity: 0, y: 0 }}
-            animate={{ opacity: [0.2, 0.4, 0.2], y: [0, -10, 0] }}
-            transition={{
-              duration: 5 + Math.random() * 5,
-              repeat: Infinity,
-              delay: i * 0.3,
-            }}
-            style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-            }}
-          />
-        ))}
-      </div>
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12"
+          >
+            <motion.h1
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-balance"
+            >
+              Innovative Digital Solutions for
+              <span className="gradient-text ml-2">Modern Businesses</span>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-8"
+            >
+              Transform your vision into reality with cutting-edge technology and expert solutions. We deliver high-performance digital experiences that drive growth.
+            </motion.p>
 
-      <div className="relative z-10 max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-12">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+            >
+              <button className="px-8 py-3 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-primary/50 transition-all duration-300">
+                <Link href="/contact">Get Started</Link>
+              </button>
+              <button className="px-8 py-3 glass border border-white/20 text-white font-semibold rounded-lg hover:border-primary/50 transition-all duration-300">
+                <a href="#services">Our Services</a>
+              </button>
+            </motion.div>
+          </motion.div>
 
-        {/* Text Content */}
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-          viewport={{ once: true }}
-          className="text-center lg:text-left w-full lg:w-1/2"
-        >
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 leading-tight">
-            Sahil Yousaf
-          </h1>
-          <h2 className="text-lg sm:text-xl text-lime-400 font-mono mb-6">
-            <Typewriter
-              words={['Frontend Developer', 'Creative Coder', "Skills", "HTML", "CSS", "JAVASCRIPT", "TYPESCRIPT", "NEXT.JS", "SANITY", "FIGMA"]}
-              loop={true}
-              cursor
-              cursorStyle="_"
-              typeSpeed={70}
-              deleteSpeed={40}
-              delaySpeed={1500}
-            />
-          </h2>
-          <p className="text-gray-300 font-light text-base sm:text-lg mb-8 max-w-lg mx-auto lg:mx-0">
-          I&#39;m a passionate Frontend Developer who crafts clean, responsive, and interactive web experiences using modern tech like Next.js, and Tailwind CSS. I turn ideas into user-friendly UIs that just feel right.
-
-          </p>
-
-          <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-            <button className="w-full sm:w-auto px-8 py-3 backdrop-blur-md bg-lime-500/80 text-white font-semibold rounded-xl shadow-xl hover:bg-lime-600 hover:scale-105 transition-all duration-300">
-              <Link href="/contact">
-                Let’s Get Started →
-              </Link>
-            </button>
-          </div>
-        </motion.div>
-
-        {/* Profile Image */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-          viewport={{ once: true }}
-          className="w-full lg:w-1/2 flex justify-center"
-        >
-
-          <div className="flex-1 flex justify-center">
-            <div className="bg-gradient-to-tr from-green-500/30 via-blue-500/20 to-purple-500/10 p-1 rounded-full shadow-lg hover:scale-105 transition-all">
-              <Image
-                src="/men.jpg"
-                alt="Profile"
-                width={288} // 72 x 4 = 288px
-                height={288}
-                className="rounded-full object-cover border-4 border-black"
-                priority // optional: for faster loading if above the fold
-              />
-
+          {/* Hero Image Placeholder */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="relative h-96 rounded-2xl overflow-hidden glass border border-white/10 mt-12"
+          >
+            <div className="w-full h-full bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 flex items-center justify-center">
+              <div className="text-center">
+                <Rocket className="w-16 h-16 text-primary mx-auto mb-4 opacity-50" />
+                <p className="text-white/50">Your Project Showcase Here</p>
+              </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
+      </section>
 
-      </div>
-    </section>
+      {/* Services Section */}
+      <section id="services" className="relative py-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl sm:text-5xl font-bold mb-4">Our Services</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Comprehensive solutions tailored to your business needs
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((service, idx) => (
+              <ServiceCard key={idx} {...service} index={idx} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us Section */}
+      <section className="relative py-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl sm:text-5xl font-bold mb-4">Why Choose Us</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              We bring expertise, innovation, and dedication to every project
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {features.map((feature, idx) => (
+              <FeatureCard key={idx} {...feature} index={idx} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section id="pricing" className="relative py-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl sm:text-5xl font-bold mb-4">Simple, Transparent Pricing</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Choose the perfect plan for your project needs
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {pricing.map((plan, idx) => (
+              <PricingCard key={idx} {...plan} index={idx} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Portfolio Section */}
+      <section className="relative py-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl sm:text-5xl font-bold mb-4">Recent Projects</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Showcasing our latest work and achievements
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {projects.map((project, idx) => (
+              <ProjectCard key={idx} {...project} index={idx} />
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mt-12"
+          >
+            <button className="px-8 py-3 glass border border-white/20 text-white font-semibold rounded-lg hover:border-primary/50 transition-all duration-300">
+              <Link href="/portfolio">View All Projects</Link>
+            </button>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="relative py-20 px-4 mb-10">
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="glass rounded-2xl border border-white/10 p-12 text-center"
+          >
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Ready to Transform Your Business?</h2>
+            <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
+              Let's discuss how we can help you achieve your digital goals. Get in touch with our team today.
+            </p>
+            <button className="px-8 py-3 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-primary/50 transition-all duration-300">
+              <Link href="/contact">Start Your Project</Link>
+            </button>
+          </motion.div>
+        </div>
+      </section>
+    </main>
   );
 }
