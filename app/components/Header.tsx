@@ -4,6 +4,7 @@
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { navLinksNames } from '@/data/navData';
@@ -37,9 +38,14 @@ export default function Header() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center font-bold text-secondary text-lg">
-            CT
-          </div>
+          <Image
+            src="/logo.png"
+            alt="Chris Tect Solution"
+            width={40}
+            height={40}
+            className="w-10 h-10 object-contain"
+            priority
+          />
           <span className="text-lg font-bold text-white hidden sm:inline">Chris Tect</span>
         </Link>
 

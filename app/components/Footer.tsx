@@ -2,6 +2,7 @@
 'use client'
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin, Facebook, Linkedin, Twitter } from 'lucide-react'
 
@@ -20,9 +21,13 @@ export default function Footer() {
                     {/* Company Info */}
                     <div>
                         <div className="flex items-center gap-2 mb-4">
-                            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center font-bold text-secondary">
-                                CT
-                            </div>
+                            <Image
+                                src="/logo.png"
+                                alt="Chris Tect Solution"
+                                width={40}
+                                height={40}
+                                className="w-10 h-10 object-contain"
+                            />
                             <h2 className="text-xl font-bold text-white">Chris Tect Solution</h2>
                         </div>
                         <p className="text-muted-foreground text-sm leading-relaxed">
