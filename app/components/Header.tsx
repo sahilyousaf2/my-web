@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { navLinksNames } from '@/data/navData';
+import Logo from './Logo';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,19 +34,22 @@ export default function Header() {
       initial="hidden"
       animate="visible"
       variants={menuVariants}
-      className="fixed top-0 w-full z-50 bg-neutral-900 text-white shadow-md"
+      className="fixed top-0 w-full z-50 bg-background/95 backdrop-blur-md border-b border-border shadow-md"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-        <Link href="/" className="text-xl font-bold text-lime-400 md:text-2xl">Sahil Yousaf</Link>
+        <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+          <Logo />
+          <span className="hidden sm:inline text-lg font-bold text-primary">Chris Tech</span>
+        </Link>
 
-        <nav className="hidden md:flex space-x-6">
+        <nav className="hidden md:flex space-x-8">
           {navLinksNames.map((item, idx) => (
             <Link
               key={idx}
               href={item.link}
-              className={`hover:text-lime-400 transition-all duration-300 ${pathname === item.link
-                  ? 'text-lime-400 font-semibold'
-                  : 'text-white'
+              className={`text-sm font-medium transition-colors duration-300 ${pathname === item.link
+                  ? 'text-primary font-semibold'
+                  : 'text-foreground hover:text-primary'
                 }`}
             >
               {item.name}
@@ -55,7 +59,7 @@ export default function Header() {
 
         {/* Mobile Menu Toggle */}
         <div className="md:hidden">
-          <button onClick={() => setIsOpen(!isOpen)} className="text-gray-600 hover:text-black">
+          <button onClick={() => setIsOpen(!isOpen)} className="text-foreground hover:text-primary transition-colors">
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
@@ -70,12 +74,21 @@ export default function Header() {
             animate="visible"
             exit="exit"
             variants={mobileMenuVariants}
-            className="md:hidden bg-neutral-900 text-white px-4 pb-4 space-y-2 shadow-md overflow-hidden"
+            className="md:hidden bg-background/95 backdrop-blur-md border-t border-border px-4 pb-4 space-y-2 overflow-hidden"
           >
-            <Link href="/" onClick={() => setIsOpen(false)} className="block hover:text-lime-500 transition-all duration-300">Home</Link>
-            <Link href="/project" onClick={() => setIsOpen(false)} className="block hover:text-lime-500 transition-all duration-300">Projects</Link>
-            <Link href="/about" onClick={() => setIsOpen(false)} className="block hover:text-lime-500 transition-all duration-300">About</Link>
-            <Link href="/contact" onClick={() => setIsOpen(false)} className="block hover:text-lime-500 transition-all duration-300">Contact</Link>
+            {navLinksNames.map((item, idx) => (
+              <Link
+                key={idx}
+                href={item.link}
+                onClick={() => setIsOpen(false)}
+                className={`block py-2 text-sm font-medium transition-colors duration-300 ${pathname === item.link
+                  ? 'text-primary font-semibold'
+                  : 'text-foreground hover:text-primary'
+                }`}
+              >
+                {item.name}
+              </Link>
+            ))}
           </motion.div>
         )}
       </AnimatePresence>

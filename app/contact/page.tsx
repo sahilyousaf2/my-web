@@ -180,7 +180,13 @@ export default function Contact() {
   }
 
   return (
-    <div className="min-h-screen flex md:mt-14 mt-10 items-center justify-center bg-black px-4">
+    <div className="relative min-h-screen bg-background overflow-hidden pt-20 pb-20 flex items-center justify-center">
+      {/* Background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/15 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+      </div>
+
       <ToastContainer position="bottom-right" autoClose={3000} />
 
       <motion.div
@@ -188,97 +194,92 @@ export default function Contact() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
         viewport={{ once: true }}
-        className="max-w-md w-full text-center text-white"
+        className="relative z-10 max-w-2xl w-full mx-auto px-4"
       >
-        <motion.h1
+        <motion.div
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-3xl font-bold mb-4"
+          className="text-center mb-12"
         >
-          Get In Touch
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="text-sm text-gray-400 mb-8"
-        >
-          Have a project in mind? Contact us to get started!
-        </motion.p>
+          <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-4">
+            Get In Touch
+          </h1>
+          <p className="text-xl text-muted-foreground">
+            Have a project in mind? We'd love to hear about it. Let's discuss how we can help bring your vision to life.
+          </p>
+        </motion.div>
 
         <motion.form
           onSubmit={handleSubmit}
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="space-y-4"
+          className="space-y-6 p-8 rounded-lg border border-border bg-card/50 backdrop-blur-sm"
         >
-          <div className="text-left">
-            <label className="block font-bold mb-1">Name</label>
+          <div>
+            <label className="block text-foreground font-medium mb-2">Name</label>
             <input
               type="text"
               name="name"
               value={form.name}
               onChange={handleChange}
-              placeholder="Enter your name"
-              className="w-full p-3 rounded bg-black border-lime-400 border-2 text-white outline-none"
+              placeholder="Your full name"
+              className="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground placeholder-muted-foreground focus:border-primary focus:outline-none transition-colors"
               required
             />
           </div>
 
-          <div className="text-left">
-            <label className="block font-bold mb-1">Email</label>
+          <div>
+            <label className="block text-foreground font-medium mb-2">Email</label>
             <input
               type="email"
               name="email"
               value={form.email}
               onChange={handleChange}
-              placeholder="Enter your email"
-              className="w-full p-3 rounded bg-black border-lime-400 border-2 text-white outline-none"
+              placeholder="your.email@example.com"
+              className="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground placeholder-muted-foreground focus:border-primary focus:outline-none transition-colors"
               required
             />
           </div>
 
-          <div className="text-left">
-            <label className="block font-bold mb-1">Phone</label>
+          <div>
+            <label className="block text-foreground font-medium mb-2">Phone</label>
             <input
               type="tel"
               name="phone"
               value={form.phone}
               onChange={handleChange}
-              placeholder="Enter your phone number"
-              className="w-full p-3 rounded bg-black border-lime-400 border-2 text-white outline-none"
+              placeholder="Your phone number"
+              className="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground placeholder-muted-foreground focus:border-primary focus:outline-none transition-colors"
               required
             />
           </div>
 
-          <div className="text-left">
-            <label className="block font-bold mb-1">Message</label>
+          <div>
+            <label className="block text-foreground font-medium mb-2">Message</label>
             <textarea
               name="message"
               value={form.message}
               onChange={handleChange}
-              placeholder="Enter your message"
-              rows={4}
-              className="w-full p-3 rounded bg-black border-lime-400 border-2 text-white outline-none resize-none"
+              placeholder="Tell us about your project..."
+              rows={5}
+              className="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground placeholder-muted-foreground focus:border-primary focus:outline-none transition-colors resize-none"
               required
             ></textarea>
           </div>
 
-          <div className="pt-4">
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full bg-lime-500 text-white font-bold py-3 rounded hover:bg-lime-700 transition"
-            >
-              {loading ? 'Sending...' : 'Submit ↗'}
-            </button>
-          </div>
+          <motion.button
+            type="submit"
+            disabled={loading}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="w-full bg-primary text-primary-foreground font-semibold py-3 rounded-lg hover:shadow-lg transition-all duration-300 disabled:opacity-50"
+          >
+            {loading ? 'Sending...' : 'Send Message'}
+          </motion.button>
         </motion.form>
       </motion.div>
     </div>
