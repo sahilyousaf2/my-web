@@ -138,6 +138,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { Mail, Phone, MapPin, Clock } from 'lucide-react'
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -179,8 +180,35 @@ export default function Contact() {
     }
   }
 
+  const contactDetails = [
+    {
+      icon: Mail,
+      title: 'Email',
+      value: 'contact@christech.com',
+      description: 'Send us an email anytime',
+    },
+    {
+      icon: Phone,
+      title: 'Phone',
+      value: '+92 (311) 281-3975',
+      description: 'Call us during business hours',
+    },
+    {
+      icon: MapPin,
+      title: 'Office',
+      value: 'Karachi, Pakistan',
+      description: 'Visit us at our location',
+    },
+    {
+      icon: Clock,
+      title: 'Hours',
+      value: '9 AM - 6 PM PST',
+      description: 'Monday to Friday',
+    },
+  ];
+
   return (
-    <div className="relative min-h-screen bg-background overflow-hidden pt-20 pb-20 flex items-center justify-center">
+    <div className="relative min-h-screen bg-background overflow-hidden pt-20 pb-20">
       {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/15 rounded-full blur-3xl" />
@@ -189,36 +217,96 @@ export default function Contact() {
 
       <ToastContainer position="bottom-right" autoClose={3000} />
 
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        viewport={{ once: true }}
-        className="relative z-10 max-w-2xl w-full mx-auto px-4"
-      >
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
           <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-4">
             Get In Touch
           </h1>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Have a project in mind? We'd love to hear about it. Let's discuss how we can help bring your vision to life.
           </p>
         </motion.div>
 
-        <motion.form
-          onSubmit={handleSubmit}
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="space-y-6 p-8 rounded-lg border border-border bg-card/50 backdrop-blur-sm"
-        >
+        {/* Two Column Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Contact Information */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="space-y-6"
+          >
+            <div className="mb-8">
+              <h2 className="text-3xl font-bold text-foreground mb-2">Contact Information</h2>
+              <p className="text-muted-foreground">
+                Reach out to us through any of these channels. We'll get back to you as soon as possible.
+              </p>
+            </div>
+
+            <div className="grid gap-4">
+              {contactDetails.map((detail, index) => {
+                const Icon = detail.icon;
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="p-6 rounded-lg border border-border bg-card/50 backdrop-blur-sm hover:border-primary hover:bg-card/60 transition-all duration-300"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="p-3 rounded-lg bg-primary/20 text-primary flex-shrink-0 mt-1">
+                        <Icon className="w-6 h-6" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-foreground mb-1">{detail.title}</h3>
+                        <p className="text-primary font-medium text-sm mb-1">{detail.value}</p>
+                        <p className="text-muted-foreground text-sm">{detail.description}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {/* Response Time Info */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              viewport={{ once: true }}
+              className="p-6 rounded-lg border border-primary/30 bg-primary/10 backdrop-blur-sm"
+            >
+              <h3 className="font-semibold text-foreground mb-2">Quick Response</h3>
+              <p className="text-muted-foreground text-sm">
+                We typically respond to inquiries within 24 hours during business days.
+              </p>
+            </motion.div>
+          </motion.div>
+
+          {/* Contact Form */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <motion.form
+              onSubmit={handleSubmit}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="space-y-6 p-8 rounded-lg border border-border bg-card/50 backdrop-blur-sm sticky top-20"
+            >
           <div>
             <label className="block text-foreground font-medium mb-2">Name</label>
             <input
@@ -280,8 +368,10 @@ export default function Contact() {
           >
             {loading ? 'Sending...' : 'Send Message'}
           </motion.button>
-        </motion.form>
-      </motion.div>
+            </motion.form>
+          </motion.div>
+        </div>
+      </div>
     </div>
   )
 }

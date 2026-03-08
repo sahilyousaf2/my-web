@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { ProjectCardData } from '@/data/project';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, Eye } from 'lucide-react';
 
 export default function Portfolio() {
   return (
@@ -31,8 +31,34 @@ export default function Portfolio() {
           </p>
         </motion.div>
 
-        {/* Projects */}
-        <div className="space-y-20">
+        {/* Filter Section (Optional) */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="flex flex-wrap gap-3 justify-center mb-16"
+        >
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-6 py-2 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:shadow-lg transition-all duration-300"
+          >
+            All Projects
+          </motion.button>
+          {['Web Development', 'Mobile Apps', 'Design'].map((category) => (
+            <motion.button
+              key={category}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-6 py-2 rounded-lg border border-border text-foreground font-medium text-sm hover:border-primary hover:text-primary transition-all duration-300"
+            >
+              {category}
+            </motion.button>
+          ))}
+        </motion.div>
+
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
           {ProjectCardData?.map((project, index) => (
             <motion.div
               key={index}
@@ -40,59 +66,81 @@ export default function Portfolio() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className={`flex flex-col-reverse ${
-                project.reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'
-              } items-center lg:items-center gap-8 lg:gap-12`}
+              className="group rounded-lg overflow-hidden border border-border bg-card/50 backdrop-blur-sm hover:border-primary transition-all duration-300 flex flex-col h-full"
             >
-              {/* Text Section */}
+              {/* Image Container */}
               <motion.div
-                initial={{ opacity: 0, x: project.reverse ? 30 : -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-                className="w-full lg:w-1/2 space-y-4"
+                className="relative h-64 overflow-hidden bg-gradient-to-br from-primary/20 to-primary/5"
               >
-                <h3 className="text-3xl font-bold text-foreground">
-                  {project.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed text-lg">
-                  {project.description}
-                </p>
-
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="inline-block mt-6"
-                >
-                  <Link
-                    href={project.link || '#'}
-                    target="_blank"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:shadow-lg transition-all duration-300"
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  width={400}
+                  height={300}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileHover={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="w-full"
                   >
-                    View Project <ExternalLink className="w-4 h-4" />
-                  </Link>
-                </motion.div>
-              </motion.div>
-
-              {/* Image Section */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-                className="w-full lg:w-1/2"
-              >
-                <div className="relative rounded-lg overflow-hidden border border-border shadow-lg hover:shadow-xl transition-shadow duration-300">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    width={600}
-                    height={400}
-                    className="w-full h-auto object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
+                    <Link
+                      href={project.link || '#'}
+                      target="_blank"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground font-semibold rounded-lg hover:shadow-lg transition-all duration-300 text-sm"
+                    >
+                      <Eye className="w-4 h-4" />
+                      View Project
+                    </Link>
+                  </motion.div>
                 </div>
               </motion.div>
+
+              {/* Content */}
+              <div className="p-6 flex-1 flex flex-col justify-between">
+                <div className="space-y-3">
+                  {/* Category Badge */}
+                  {project.category && (
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-medium">
+                        {project.category}
+                      </span>
+                    </div>
+                  )}
+
+                  {/* Title */}
+                  <h3 className="text-xl font-bold text-foreground line-clamp-2">
+                    {project.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3">
+                    {project.description}
+                  </p>
+                </div>
+
+                {/* Stats or Tags */}
+                <div className="pt-4 border-t border-border mt-4 flex items-center justify-between">
+                  <div className="flex gap-2">
+                    {project.tags && project.tags.slice(0, 2).map((tag, idx) => (
+                      <span key={idx} className="text-xs text-muted-foreground">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <motion.a
+                    href={project.link || '#'}
+                    target="_blank"
+                    whileHover={{ x: 4 }}
+                    className="text-primary hover:text-primary font-semibold inline-flex items-center"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                  </motion.a>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
